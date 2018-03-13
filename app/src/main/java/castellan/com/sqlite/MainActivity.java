@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -19,20 +20,28 @@ public class MainActivity extends AppCompatActivity {
     private ListView lista_tarefas;
     private EditText tarefa;
     private SQLiteDatabase db;
-
+    private Button btAtualizar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tarefa = findViewById(R.id.etTarefa);
-
+        btAtualizar = findViewById(R.id.btAtualizar);
         db = openOrCreateDatabase("tarefas", MODE_PRIVATE, null);
+
         try {
             db.execSQL("CREATE TABLE IF NOT EXISTS TAREFA(NOME VARCHAR(50));");
 
         } catch (Exception e) {
             System.out.println(e.getMessage() + "\nOnCreate");
         }
+
+        btAtualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                get();
+            }
+        });
 
     }
 
@@ -43,9 +52,11 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Campo vazio", Toast.LENGTH_SHORT).show();
 
             else {
+                tf = tarefa.getText().toString();
                 db.execSQL("INSERT INTO TAREFA VALUES('" + tf + "') ");
                 Toast.makeText(this, "Deu certo\n" + tf + " adicionado", Toast.LENGTH_SHORT).show();
                 get();
+                tarefa.setText("");
             }
         } catch (SQLiteException e) {
             System.out.println(e.getMessage() + "\nOnSave");
