@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context="castellan.com.sqlite.MainActivity"
+    tools:layout_editor_absoluteY="73dp">
+
+    <Button
+        android:id="@+id/btAdd"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginStart="8dp"
+        android:onClick="save"
+        android:text="Adicionar"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/lwTarefas"
+        app:layout_constraintEnd_toStartOf="@+id/btAtualizar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etTarefa" />
+
+    <Button
+        android:id="@+id/btAtualizar"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="refresh"
+        android:text="Atualizar"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btAdd"
+        app:layout_constraintTop_toTopOf="@+id/btAdd" />
+
+    <EditText
+        android:id="@+id/etTarefa"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginStart="13dp"
+        android:ems="10"
+        android:hint="Tarefa"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/lwTarefas"
+        style="@style/Widget.AppCompat.ListView.Menu"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btAdd" />
+</android.support.constraint.ConstraintLayout>
